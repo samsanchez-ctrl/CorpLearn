@@ -1,5 +1,6 @@
 package com.corp.learn.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -23,5 +24,9 @@ public class UsuarioService {
     public Optional<Usuario> login(String email, String password) {
         return usuarioRepository.findByEmail(email)
                 .filter(u -> u.getPassword().equals(password));
+    }
+
+    public List<Usuario> obtenerTodosLosUsuarios() {
+        return usuarioRepository.findAll();
     }
 }
