@@ -2,6 +2,7 @@ package com.corp.learn.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,14 +16,12 @@ import com.corp.learn.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin(origins = "http://localhost:4200") // Para conectar con Angular
+//@CrossOrigin(origins = "http://localhost:4200") // Para conectar con Angular
 public class UsuarioController {
     
-    private final UsuarioService usuarioService;
+    @Autowired
+    private UsuarioService usuarioService;
 
-    public UsuarioController(UsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
-    }
 
     @PostMapping("/register")
     public ResponseEntity<Usuario> registrar(@RequestBody Usuario usuario) {
@@ -36,7 +35,7 @@ public class UsuarioController {
                 .orElse(ResponseEntity.status(401).build());
     }
 
-    @GetMapping("/listaUsuarios")
+    @GetMapping("")
     public ResponseEntity<List<Usuario>> listarUsuarios() {
         List<Usuario> usuarios = usuarioService.obtenerTodosLosUsuarios();
         return ResponseEntity.ok(usuarios);
