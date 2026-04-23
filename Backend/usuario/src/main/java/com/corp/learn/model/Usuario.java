@@ -1,4 +1,4 @@
-package com.corp.learn.model;
+package com.corp.usuario.model;
 
 //import java.util.Set;
 

@@ -1,4 +1,4 @@
-package com.corp.learn.controller;
+package com.corp.usuario.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.corp.learn.model.Usuario;
-import com.corp.learn.service.UsuarioService;
+import com.corp.usuario.model.Usuario;
+import com.corp.usuario.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")

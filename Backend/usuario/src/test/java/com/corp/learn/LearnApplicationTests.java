@@ -1,10 +1,10 @@
-package com.corp.learn;
+package com.corp.usuario;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LearnApplicationTests {
+class UsuarioApplicationTests {
 
 	@Test
 	void contextLoads() {

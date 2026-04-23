@@ -1,4 +1,4 @@
-package com.corp.learn.service;
+package com.corp.usuario.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.corp.learn.model.Usuario;
-import com.corp.learn.repository.UsuarioRepository;
+import com.corp.usuario.model.Usuario;
+import com.corp.usuario.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
