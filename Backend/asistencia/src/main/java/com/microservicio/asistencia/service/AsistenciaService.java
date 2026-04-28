@@ -12,8 +12,8 @@ import com.microservicio.asistencia.repository.AsistenciaRepository;
 public class AsistenciaService {
     
     @Autowired
-    private AsistenciaRepository repo;
+    private AsistenciaRepository repository;
     
-    public Asistencia registrar(Asistencia a) { return repo.save(a); }
-    public List<Asistencia> porAlumno(Long alumnoId) { return repo.findAll(); } /* Logica de filtrado */
+    public Asistencia registrar(Asistencia a) { return repository.save(a); }
+    public List<Asistencia> porAlumno(Long alumnoId) { return repository.findAll(); } /* Logica de filtrado */
 }
