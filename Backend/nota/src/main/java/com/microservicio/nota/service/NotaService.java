@@ -10,7 +10,7 @@ import com.microservicio.nota.repository.NotaRepository;
 public class NotaService {
     
     @Autowired
-    private NotaRepository repo;
+    private NotaRepository repository;
     
-    public Nota subirNota(Nota n) { return repo.save(n); }
+    public Nota subirNota(Nota n) { return repository.save(n); }
 }
