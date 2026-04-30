@@ -20,4 +20,13 @@ public class Asistencia {
     private Long horarioId; // FK Logica a Calendario
     private LocalDate fecha;
     private Boolean presente;
+
+    // Creo metodos para Asistencia Service por fallo de lombook
+    public Long getAlumnoId() {
+    return alumnoId;
+    }
+
+    public Long getHorarioId() {
+    return horarioId;
+    }
 }
