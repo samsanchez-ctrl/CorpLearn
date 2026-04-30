@@ -20,5 +20,14 @@ public class Calendario {
     private Long relatorId; //FK logica a microservicio Usuario (Rol Relator)
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;
-    private String sala;  
+    private String sala;
+
+    // Creo metodos para Calendario Service por fallo de lombook
+    public Long getModuloId() {
+    return moduloId;
+    }
+
+    public Long getUsuarioId() {
+    return relatorId;
+    }
 }
