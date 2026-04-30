@@ -15,8 +15,8 @@ public class Modulo {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+    private Long id;
+    private Long programaId;
     private String nombre; 
     private String descripcion;
 }
