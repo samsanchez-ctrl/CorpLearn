@@ -17,5 +17,14 @@ public class Nota {
     private Long alumnoId;
     private Long moduloId;
     private double calificacion; // Ej: 1.0 a 7.0
-    private String observacion; 
+    private String observacion;
+
+    // Creo metodos para Nota Service por fallo de lombook
+    public Long getAlumnoId() {
+    return alumnoId;
+    }
+
+    public Long getModuloId() {
+    return moduloId;
+    }
 }

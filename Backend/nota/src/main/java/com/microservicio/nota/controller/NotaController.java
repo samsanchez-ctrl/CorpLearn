@@ -17,5 +17,7 @@ public class NotaController {
     private NotaService service;
 
     @PostMapping("")
-    public Nota crear(@RequestBody Nota n) { return service.subirNota(n); }
+    public Nota crear(@RequestBody Nota n) { 
+        return service.subirNota(n); 
+    }
 }
