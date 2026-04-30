@@ -21,7 +21,7 @@ public class UsuarioService {
 
     public Usuario registrarUsuario(Usuario usuario) {
         try {
-        RolDto rol = restTemplate.getForObject("http://localhost:8089/api/rol/" + usuario.getId(), RolDto.class);
+        RolDto rol = restTemplate.getForObject("http://localhost:8089/roles/" + usuario.getId(), RolDto.class);
 
         if (rol != null && rol.getId() != null) {
             // Si el rol existe, procedemos a guardar en la DB de Usuarios
