@@ -4,7 +4,6 @@ package com.microservicio.programa.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,8 +14,7 @@ import com.microservicio.programa.model.Programa;
 import com.microservicio.programa.service.ProgramaService;
 
 @RestController
-@RequestMapping("/api/programas")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/programas")
 public class ProgramaController {
 
     private final ProgramaService programaService;
@@ -25,12 +23,12 @@ public class ProgramaController {
         this.programaService = programaService;
     }
 
-    @PostMapping("/crear")
+    @PostMapping("")
     public ResponseEntity<Programa> crear(@RequestBody Programa programa) {
         return ResponseEntity.ok(programaService.guardarPrograma(programa));
     }
 
-    @GetMapping("/lista")
+    @GetMapping("")
     public ResponseEntity<List<Programa>> listar() {
         return ResponseEntity.ok(programaService.listarTodo());
     }
