@@ -24,7 +24,7 @@ public class UsuarioService {
         RolDto rol = restTemplate.getForObject("http://localhost:8089/api/rol/" + usuario.getId(), RolDto.class);
 
         if (rol != null && rol.getId() != null) {
-            // 2. Si el rol existe, procedemos a guardar en la DB de Usuarios
+            // Si el rol existe, procedemos a guardar en la DB de Usuarios
             return repository.save(usuario);
         } else {
             throw new RuntimeException("Error: El Rol con ID " + usuario.getId() + " no existe.");
