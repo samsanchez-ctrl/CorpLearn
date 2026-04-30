@@ -21,4 +21,9 @@ public class Bitacora {
     private String contenidoTratado;
     private String observaciones;
     private LocalDateTime fechaRegistro;
+
+    // Creo metodo para Bitacora Service por error de lombook
+    public Long getHorarioId() {
+        return horarioId;
+    }
 }
