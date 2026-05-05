@@ -25,6 +25,12 @@ public class Usuario {
     @Column
     private String nombre;
 
+    @Column
+    private Long rolId;
 
+
+    public Long getRolId() {
+        return rolId;
+    }
 }
 

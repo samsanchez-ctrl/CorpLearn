@@ -21,13 +21,13 @@ public class UsuarioService {
 
     public Usuario registrarUsuario(Usuario usuario) {
         try {
-        RolDto rol = restTemplate.getForObject("http://localhost:8089/roles/" + usuario.getId(), RolDto.class);
+        RolDto rol = restTemplate.getForObject("http://localhost:8089/roles/" + usuario.getRolId(), RolDto.class);
 
         if (rol != null && rol.getId() != null) {
             // Si el rol existe, procedemos a guardar en la DB de Usuarios
             return repository.save(usuario);
         } else {
-            throw new RuntimeException("Error: El Rol con ID " + usuario.getId() + " no existe.");
+            throw new RuntimeException("Error: El Rol con ID " + usuario.getRolId() + " no existe.");
         }
     } catch (Exception e) {
         // En caso de que el microservicio de ROL esté apagado
