@@ -25,5 +25,6 @@ public class Usuario {
     @Column
     private String nombre;
 
+
 }
 

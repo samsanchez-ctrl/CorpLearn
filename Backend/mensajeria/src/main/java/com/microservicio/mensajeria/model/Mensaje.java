@@ -23,4 +23,12 @@ public class Mensaje {
     private String contenido;
 
     private LocalDateTime fecha;
+
+    public String getEmisorId() {
+        return emisor;
+    }
+
+    public String getReceptorId() {
+        return receptor;
+    }
 }
