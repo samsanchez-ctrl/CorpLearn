@@ -19,4 +19,5 @@ public class Modulo {
     private Long programaId;
     private String nombre; 
     private String descripcion;
+
 }
