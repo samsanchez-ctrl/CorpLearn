@@ -23,5 +23,13 @@ public class PortalCliente {
 
     private String contactoRrhh;
 
+    private Long programaId; // FK logica portal cliente a programa
+
     private String tokenAcceso;
+
+public Long getProgramaId() {
+    return programaId;
 }
+}
+
+
