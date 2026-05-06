@@ -30,7 +30,7 @@ public class UsuarioController {
                 .orElse(ResponseEntity.status(401).build());
     }
 
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity<List<Usuario>> listarUsuarios() {
         List<Usuario> usuarios = service.obtenerTodosLosUsuarios();
         return ResponseEntity.ok(usuarios);
