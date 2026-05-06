@@ -38,7 +38,7 @@ public class ModuloController {
         return service.buscar(id);
     }
 
-    @DeleteMapping("/{id")
+    @DeleteMapping("/{id}")
     public void eliminar(@PathVariable Long id){
         service.eliminar(id);
     }
