@@ -1,4 +1,4 @@
-package com.microservicio.nota.controller;
+package com.microservicio.login.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -7,19 +7,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.microservicio.nota.model.Nota;
-import com.microservicio.nota.service.NotaService;
+import com.microservicio.login.dto.LoginRequest;
+import com.microservicio.login.service.LoginService;
 
 @RestController
-@RequestMapping("/notas")
+@RequestMapping("/authLogin")
 @CrossOrigin(origins = "http://localhost:4200")
-public class NotaController {
-    
+public class LoginController {
     @Autowired
-    private NotaService service;
+    private LoginService service;
 
     @PostMapping("")
-    public Nota crear(@RequestBody Nota n) { 
-        return service.subirNota(n); 
+    public Object login(@RequestBody LoginRequest request) {
+        return service.validar(request);
     }
 }

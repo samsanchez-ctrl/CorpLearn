@@ -1,4 +1,4 @@
-package com.microservicio.nota.controller;
+package com.microservicio.register.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -7,19 +7,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.microservicio.nota.model.Nota;
-import com.microservicio.nota.service.NotaService;
+import com.microservicio.register.dto.RegisterRequest;
+import com.microservicio.register.service.RegisterService;
 
 @RestController
-@RequestMapping("/notas")
+@RequestMapping("/authRegister")
 @CrossOrigin(origins = "http://localhost:4200")
-public class NotaController {
-    
+public class RegisterController {
     @Autowired
-    private NotaService service;
+    private RegisterService service;
 
     @PostMapping("")
-    public Nota crear(@RequestBody Nota n) { 
-        return service.subirNota(n); 
+    public Object registrar(@RequestBody RegisterRequest request) {
+        return service.crear(request);
     }
 }
