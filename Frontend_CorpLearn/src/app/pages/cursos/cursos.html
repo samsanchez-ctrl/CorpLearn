@@ -1,0 +1,56 @@
+<div class="dashboard-container">
+  
+  <header class="navbar">
+    <div class="brand">CorpLearn</div>
+    
+    <div class="user-actions">
+      <span class="welcome-text">Bienvenido, <strong>{{ nombreUsuario }}</strong></span>
+      
+      <div class="notification-bell" (click)="toggleNotificaciones()">
+        <span class="bell-icon">🔔</span>
+        <span class="badge" *ngIf="notificaciones.length > 0">{{ notificaciones.length }}</span>
+        
+        <div class="dropdown-panel" *ngIf="mostrarNotificaciones" (click)="$event.stopPropagation()">
+          <h3>Alertas Pendientes</h3>
+          <hr />
+          <p class="empty-notif" *ngIf="notificaciones.length === 0">No tienes alertas sin leer.</p>
+          
+          <ul class="notif-list">
+            <li *ngFor="let n of notificaciones" (click)="leerNotificacion(n.id)">
+              <span class="notif-text">{{ n.mensaje }}</span>
+              <small class="click-to-read">✓ Marcar como leída</small>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="btn-logout" (click)="salir()">Cerrar Sesión</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <h1>Catálogo de Cursos Disponibles</h1>
+    <p class="section-desc">Mejora tus habilidades técnicas inscribiéndote en nuestros módulos interactivos liderados por microservicios.</p>
+
+    <div class="courses-grid">
+      <div class="course-card" *ngFor="let c of cursos">
+        <div class="card-header">
+          <span class="category-tag">Desarrollo</span>
+          <h3>{{ c.nombre }}</h3>
+        </div>
+        <div class="card-body">
+          <p>{{ c.descripcion || 'Aprende las mejores metodologías y flujos prácticos de este framework con talleres prácticos y proyectos modulares.' }}</p>
+        </div>
+        <div class="card-footer">
+          <button 
+            class="btn-enroll" 
+            *ngIf="!esInscrito(c.id)" 
+            (click)="inscribirse(c.id, c.nombre)">
+            Inscribirme
+          </button>
+          <span class="registered-tag" *ngIf="esInscrito(c.id)">✓ Ya estás inscrito</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
