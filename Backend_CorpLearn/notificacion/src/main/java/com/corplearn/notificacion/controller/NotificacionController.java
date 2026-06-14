@@ -19,7 +19,7 @@ import com.corplearn.notificacion.service.NotificacionService;
 
 @RestController
 @RequestMapping("/notificaciones")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class NotificacionController {
     @Autowired
     private NotificacionService service;

@@ -18,7 +18,7 @@ import com.corplearn.inscripcion.service.InscripcionService;
 
 @RestController
 @RequestMapping("/inscripciones")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class InscripcionController {
     
     @Autowired

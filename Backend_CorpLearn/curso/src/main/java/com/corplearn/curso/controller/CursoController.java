@@ -19,7 +19,7 @@ import com.corplearn.curso.service.CursoService;
 
 @RestController
 @RequestMapping("/cursos")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CursoController {
     
     @Autowired
