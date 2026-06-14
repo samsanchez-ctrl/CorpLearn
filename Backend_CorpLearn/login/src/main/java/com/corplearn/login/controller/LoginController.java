@@ -14,7 +14,7 @@ import com.corplearn.login.service.LoginService;
 
 @RestController
 @RequestMapping("/authLogin")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class LoginController {
     
     @Autowired

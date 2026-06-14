@@ -13,7 +13,7 @@ import com.corplearn.register.service.RegisterService;
 
 @RestController
 @RequestMapping("/authRegister")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RegisterController {
     
     @Autowired
