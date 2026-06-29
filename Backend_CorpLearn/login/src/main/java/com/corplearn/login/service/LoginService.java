@@ -67,6 +67,7 @@ public class LoginService {
             .signWith(key)
             .compact();
 
-        return new LoginResponse(token, usuario.getEmail(), rolNombre);
+        String nombreMostrar = usuario.getNombre() + " " + usuario.getApellido();
+        return new LoginResponse(token, usuario.getEmail(), rolNombre, nombreMostrar);
     } 
 }

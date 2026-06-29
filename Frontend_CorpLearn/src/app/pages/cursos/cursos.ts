@@ -46,19 +46,19 @@ export class CursosComponent implements OnInit {
   cargarDatos(): void {
     // 1. Cargar catálogo de cursos
     this.cursoService.listarCursos().subscribe({
-      next: (res) => this.cursos = res,
+      next: (res: any) => this.cursos = res.data || res,
       error: (err) => console.error('Error al cargar cursos', err)
     });
 
     // 2. Cargar inscripciones existentes del alumno
     this.inscripcionService.listarPorUsuario(this.usuarioId).subscribe({
-      next: (res) => this.inscripciones = res,
+      next: (res: any) => this.inscripciones = res.data || res,
       error: (err) => console.error('Error al cargar inscripciones', err)
     });
 
     // 3. Cargar alertas no leídas
     this.notificacionService.obtenerNoLeidas(this.usuarioId).subscribe({
-      next: (res) => this.notificaciones = res,
+      next: (res: any) => this.notificaciones = res.data || res,
       error: (err) => console.error('Error al cargar notificaciones', err)
     });
   }

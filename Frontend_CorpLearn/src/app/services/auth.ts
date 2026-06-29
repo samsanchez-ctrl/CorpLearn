@@ -7,7 +7,6 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  // En la version actual de Angular se prefiere usar inject() en lugar de declararlo en el constructor
   private http = inject(HttpClient);
 
   // Registrar un nuevo usuario
@@ -19,11 +18,16 @@ export class AuthService {
   login(credenciales: { email: string; password: string }): Observable<any> {
     return this.http.post<any>(environment.urlLogin, credenciales).pipe(
       tap(response => {
-        // Si el backend responde con éxito, guardamos el token y el ID del usuario
-        if (response && response.token) {
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('usuarioId', response.usuarioId || '1'); // Salvaguarda por si el ID viene numérico
-          localStorage.setItem('nombre', response.nombre || 'Usuario');
+        // MODIFICACIÓN: Extraigo los datos de 'response.data' que viene del BaseController
+        const data = response?.data;
+        
+        if (data && data.token) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('usuarioId', data.usuarioId || '1'); 
+          localStorage.setItem('nombre', data.nombre || 'Usuario');
+          
+          // Opcional: Si necesito guardar el rol para los paneles corporativos, debo descomentar esta línea:
+          // localStorage.setItem('rol', data.rol || 'ESTUDIANTE');
         }
       })
     );

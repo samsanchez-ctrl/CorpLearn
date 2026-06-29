@@ -1,8 +1,10 @@
 package com.corplearn.inscripcion.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,40 +21,48 @@ import com.corplearn.inscripcion.service.InscripcionService;
 @RestController
 @RequestMapping("/inscripciones")
 @CrossOrigin(origins = "http://localhost:4200")
-public class InscripcionController {
+public class InscripcionController extends BaseController {
     
     @Autowired
     private InscripcionService service;
 
     @PostMapping
-    public ResponseEntity<?> crearInscripcion(@RequestBody Inscripcion inscripcion) {
+    public ResponseEntity<Map<String, Object>> crearInscripcion(@RequestBody Inscripcion inscripcion) {
         try {
-            return ResponseEntity.ok(service.inscribir(inscripcion));
+            Inscripcion nuevaInscripcion = service.inscribir(inscripcion);
+            return createResponse("Inscripción realizada correctamente", nuevaInscripcion, HttpStatus.CREATED);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("{\"error\": \"" + e.getMessage() + "\"}");
+            return createErrorResponse("Error al procesar la inscripción: " + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
-    
     @GetMapping
-    public List<Inscripcion> listarTodas() {
-        return service.obtenerTodas();
+    public ResponseEntity<Map<String, Object>> listarTodas() {
+        try {
+            List<Inscripcion> inscripciones = service.obtenerTodas();
+            return createResponse("Lista de todas las inscripciones obtenida", inscripciones, HttpStatus.OK);
+        } catch (Exception e) {
+            return createErrorResponse("Error al obtener las inscripciones: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    
     @GetMapping("/usuario/{usuarioId}")
-    public ResponseEntity<List<Inscripcion>> listarPorUsuario(@PathVariable("usuarioId") Long usuarioId) {
-        return ResponseEntity.ok(service.obtenerPorUsuario(usuarioId));
+    public ResponseEntity<Map<String, Object>> listarPorUsuario(@PathVariable("usuarioId") Long usuarioId) {
+        try {
+            List<Inscripcion> inscripcionesUsuario = service.obtenerPorUsuario(usuarioId);
+            return createResponse("Inscripciones del usuario obtenidas", inscripcionesUsuario, HttpStatus.OK);
+        } catch (Exception e) {
+            return createErrorResponse("Error al obtener las inscripciones del usuario: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
-   
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminarInscripcion(@PathVariable("id") Long id) {
+    public ResponseEntity<Map<String, Object>> eliminarInscripcion(@PathVariable("id") Long id) {
         try {
             service.cancelarInscripcion(id);
-            return ResponseEntity.ok("{\"mensaje\": \"Inscripción cancelada correctamente.\"}");
+            return createResponse("Inscripción cancelada correctamente.", null, HttpStatus.OK);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("{\"error\": \"" + e.getMessage() + "\"}");
+            return createErrorResponse("Error al cancelar la inscripción: " + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 }
